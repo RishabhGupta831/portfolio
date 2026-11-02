@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .page {
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        display: flex;
+        position: sticky;
+        top: 0px;
+        width: 100%;
+        padding: 8px clamp(10px, 3vw, 20px);
+        justify-content: space-between;
+        align-items: center;
+        /* border: 2px solid red; */
+        background: #0b1020;
+      }
+      .nav-containt {
+        display: flex;
+        flex-direction: row;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+      /* .nav-link {
+        margin: 3px 15px;
+      } */
+      .nav-link a {
+        color: aqua;
+        text-decoration: none;
+      }
+      .nav-link a:hover {
+        color: rgb(244, 245, 245);
+        text-decoration: underline;
+      }
+      /* a {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        color: white;
+      } */
+      .right-nav {
+        display: flex;
+        width: auto;
+        justify-content: flex-end;
+        /* border: 2px solid red; */
+      }
+      .right-nav-cont {
+        color: rgb(245, 241, 241);
+        font-size: 1.5rem;
+        margin: 2px 20px;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .body {
+        /* border: 2px solid red; */
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        min-height: 350px;
+        width: 100%;
+      }
+      .body.contect {
+        flex: 1;
+        min-width: 0;
+      }
+      .body_img {
+        width: 400px;
+        height: 400px;
+        /* border: 2px solid red; */
+        border-radius: 10px;
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+      .body_img img {
+        /* width: 60%; */
+        margin: auto;
+        box-shadow: 5px 3px 10px rgb(156, 233, 187);
+        border-radius: 40px;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+      }
+      .body-link {
+        display: flex;
+        margin: 16px 25px;
+        /* border: 2px solid red; */
+      }
+      .body-link a {
+        color: rgb(234, 234, 240);
+        font-size: 1.1rem;
+        margin: 0px 15px;
+        text-decoration: none;
+        color: aqua;
+        /* border: 2px solid red; */
+      }
+      .body-link a:hover {
+        color: rgb(243, 246, 244);
+        margin: 0px 15px;
+        text-decoration: underline;
+        /* border: 2px solid red; */
+      }
+      .body-text {
+        width: 100%;
+        font-size: 1.1rem;
+        max-width: 650px;
+        margin: 15px 15px;
+      }
+      .body-text h1 {
+        color: #faf7f7;
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin: 15px 15px;
+      }
+      .body-text h1 span {
+        color: rgb(156, 233, 187);
+        font-size: inherit;
+        margin: 15px 15px;
+      }
+
+      .body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+
+        /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSUHZaMvjptXigoQz-01THzln0a3Xx8y5GnkWw5vaRVA&s=10)
+          no-repeat center center / cover; */
+        background: #0b1020;
+        background-position: right center;
+        z-index: -1;
+        opacity: 0.9;
+      }
+      .btn {
+        color: #f5f1f1;
+        margin: 15px 40px;
+        padding: 8px 22px;
+        font-size: 1rem;
+        background: #0b1020;
+        /* border: 2px solid black; */
+        border-radius: 10px;
+        transition: all 0.5s;
+      }
+      .btn:hover {
+        margin: 15px 40px;
+        padding: 8px 22px;
+        box-shadow: 3px 3px 10px rgb(110, 244, 137);
+        font-size: 1rem;
+
+        border: 2px solid rgb(110, 244, 137);
+        border-radius: 10px;
+      }
+      .about_me {
+        border: 2px solid black;
+        background: #0b1020;
+      }
+      .heading {
+        font-size: 2rem;
+        margin: 10px 5px;
+        color: #f8f7f7;
+      }
+
+      @media (max-width: 768px) {
+        .my_information {
+          flex-direction: column;
+          gap: 20px;
+          padding: 15px;
+        }
+
+        .my_information div {
+          width: 100%;
+          padding: 20px;
+        }
+      }
+      .about_me {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 10px;
+      }
+      .about_me-right {
+        margin: 0px 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        color: rgb(156, 233, 187);
+        box-shadow: 5px 5px 8px black;
+        background: #0b1020;
+        align-self: flex-end;
+        padding: 13px 34px;
+      }
+      .about_me-right li {
+        color: white;
+        font-size: 1.5rem;
+
+        margin: 8px 1px;
+      }
+
+      .about_me-left {
+        border: 2px solid black;
+        margin: 0px 20px;
+        box-shadow: 5px 5px 5px black;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        background: #0b1020;
+        color: rgb(156, 233, 187);
+        padding: 16px 22px;
+      }
+      .my_information {
+        display: flex;
+        gap: 24px;
+        padding: 20px;
+        align-items: stretch;
+      }
+      .my_information div {
+        margin: 0;
+        padding: 21px 26px;
+        width: auto;
+        flex: 1;
+        min-width: 0;
+      }
+      .skill {
+        border: 2px solid #22305ce3;
+        display: flex;
+        padding: 10px 10px;
+        flex-direction: column;
+        background: #0b1020;
+      }
+      .tech {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .tech div {
+        margin: 13px 4px;
+        padding: 8px 17px;
+        background: white;
+        text-align: center;
+        box-shadow: 3px 3px 8px black;
+        font-size: 1.5rem;
+        /* border: 2px solid black; */
+        border-radius: 10px;
+      }
+      .img {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .img img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+      .work_with {
+        display: block;
+        width: 100%;
+        background: #0b1020;
+        border: 2px solid black;
+      }
+      .offer {
+        width: 100%;
+      }
+      .box-work_with {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 15px;
+        flex-direction: row;
+        font-size: 1.2rem;
+        justify-content: space-between;
+        width: 100%;
+        & .links {
+          display: flex;
+          /* padding: 21px 26px; */
+          /* margin: 10px 23px; */
+          gap: 15px;
+          align-items: center;
+          /* justify-content: space-evenly; */
+          & .contect {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            flex-direction: column;
+            padding: 0px 23px;
+            /* border: 2px solid red; */
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgb(147, 123, 243);
+            margin: 0px;
+          }
+          & .contect img {
+            padding: 10px 10px;
+            margin: 5px 5px;
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+      .chota_box {
+        color: #fcfcfc;
+        border-radius: 15px;
+        box-shadow: 3px 3px 3px black;
+        margin: 13px 6px;
+        padding: 6px 10px;
+        background: #0b1020;
+        border: 2px solid black;
+      }
+      .guide {
+        color: aquamarine;
+        margin: 10px 10px;
+        font-size: 1.1rem;
+      }
+
+      /* Tablet and mobile */
+      @media (max-width: 768px) {
+        /* Navbar */
+        .navbar {
+          flex-wrap: wrap;
+          padding: 12px;
+        }
+
+        .nav-containt {
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .right-nav {
+          justify-content: center;
+        }
+
+        .right-nav-cont {
+          font-size: 1rem;
+          margin: 0;
+        }
+
+        /* Hero section */
+        .body {
+          flex-direction: column-reverse;
+        }
+        .body_img {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          justify-content: center;
+        }
+
+        .body-text {
+          width: 100%;
+          max-width: 100%;
+          padding: 20px;
+          margin: 0;
+        }
+
+        .body-text h1 {
+          font-size: clamp(2rem, 8vw, 3rem);
+          margin: 12px 0;
+        }
+
+        .body-link {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        /* About section */
+        .my_information {
+          flex-direction: column;
+          gap: 20px;
+          padding: 15px;
+        }
+
+        .my_information div {
+          width: 100%;
+          padding: 20px;
+        }
+
+        /* Skills */
+        .tech {
+          gap: 12px;
+        }
+
+        /* Contact */
+        .box-work_with {
+          flex-direction: column;
+        }
+
+        .links {
+          justify-content: center;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      /* Small phones */
+      @media (max-width: 480px) {
+        .navbar {
+          justify-content: center;
+        }
+
+        .nav-containt {
+          gap: 10px 14px;
+        }
+
+        .body-text {
+          padding: 15px;
+          font-size: 1rem;
+        }
+
+        .body-text h1 {
+          font-size: 2rem;
+        }
+
+        .btn,
+        .btn:hover {
+          margin: 8px 4px;
+          padding: 10px 12px;
+          font-size: 0.9rem;
+        }
+
+        .heading {
+          font-size: 1.5rem;
+        }
+
+        .about_me-left,
+        .about_me-right {
+          padding: 15px;
+          font-size: 1rem;
+        }
+
+        .tech > div {
+          padding: 8px;
+        }
+
+        .chota_box {
+          overflow-wrap: anywhere;
+        }
+      }
+      hr {
+        border: none;
+        border-top: 1px solid rgba(51, 49, 73, 0.7);
+        margin: 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="navbar">
+        <div class="nav-containt">
+          <div class="nav-link" id="home">
+            <a href="#">Home</a>
+          </div>
+          <div class="nav-link" id="about"><a href="#about_me">About</a></div>
+          <div class="nav-link" id="s"><a href="#skill">Skill</a></div>
+          <div class="nav-link" id="contact">
+            <a href="#work_with">Contact</a>
+          </div>
+          <div class="nav-link" id="project"><a href="#">Project</a></div>
+        </div>
+        <div class="right-nav">
+          <div class="right-nav-cont">Rishabh..</div>
+        </div>
+      </nav>
+      <div class="body">
+        <div class="body-containt">
+          <div class="body-text">
+            <div style="color: aqua">Hi I'm</div>
+            <h1>Rishabh <span>Gupta.</span></h1>
+            <div style="color: rgb(137, 236, 165)">
+              A B.Tech Information Technology student passionate about web
+              development and problem-solving. I enjoy building responsive,
+              user-friendly websites and exploring new technologies. I'm
+              continuously improving my programming skills and aim to create
+              impactful digital experiences.
+            </div>
+
+            <button class="btn">View my Work --></button>
+            <button class="btn">contact Me.</button>
+          </div>
+
+          <div class="body-link">
+            <div><a href="https://github.com/RishabhGupta831">Git-Hud</a></div>
+            <div>
+              <a href="https://leetcode.com/u/__Rishabh12345__/">LeetCode</a>
+            </div>
+            <div>
+              <a href="https://www.linkedin.com/in/rishabh-gupta-20aa75383/"
+                >Linkden</a
+              >
+            </div>
+            <div><a href="#">G-mail</a></div>
+          </div>
+        </div>
+        <div class="body_img">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQEnaDsNugr3XA/profile-displayphoto-scale_400_400/B56Z_8jIc8LAAg-/0/1786648497489?e=1795046400&v=beta&t=s8nfzaGoOEj_4kKY9mcwvaCfpOobvu64JU5zDFs7uEc"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="about_me" id="about_me">
+        <div style="color: aquamarine">
+          About ME.
+          <hr />
+        </div>
+        <div class="heading">Get To Know About ME</div>
+        <div class="my_information">
+          <div class="about_me-left">
+            A B.Tech Information Technology student passionate about web
+            development, programming, and problem-solving. I enjoy building
+            responsive, user-friendly websites and exploring new technologies to
+            improve my skills. I have experience with HTML, CSS, C++, and Data
+            Structures and Algorithms, and I'm continuously learning JavaScript
+            and backend development. My goal is to create meaningful digital
+            experiences, work on real-world projects, and grow as a software
+            developer
+          </div>
+          <div class="about_me-right">
+            <ul type="none">
+              <li>Education</li>
+              <p>B.tech in Information Technology</p>
+
+              <li>location</li>
+              <p>India Chhatishgarh</p>
+
+              <li>Goal</li>
+              <p>
+                My goal is to become a skilled software developer by building
+                innovative, user-friendly, and impactful digital solutions. I
+                aim to continuously improve my technical skills and contribute
+                to real-world projects.
+              </p>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="skill" id="skill">
+        <div style="color: aquamarine">My Skill</div>
+        <hr />
+        <div class="heading">Technology I Work With</div>
+        <div class="tech">
+          <div class="html">
+            <div class="img">
+              <img
+                src="https://e7.pngegg.com/pngimages/410/100/png-clipart-web-development-html-responsive-web-design-logo-javascript-html-angle-web-design-thumbnail.png"
+                alt=""
+              />
+            </div>
+            HTML
+          </div>
+          <div class="CSS">
+            <div class="img">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvt02SIwKYIBkizRbXZpNwwC18h7yPR6IRETm41AD_sg&s=10"
+                alt=""
+              />
+            </div>
+            CSS
+          </div>
+          <div class="JS">
+            <div class="img">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhvEWNjz6GC0uGrTzVsgINYBqOqA9b84vcNXpf2WSfFA&s=10"
+                alt=""
+              />
+            </div>
+            JS
+          </div>
+          <div class="CPP">
+            <div class="img">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxJrX9u91qRQlnIVCvoDpuFlQjL52ti8hlmHZlVlVNmg&s=10"
+                alt=""
+              />
+            </div>
+            CPP
+          </div>
+          <div class="Python">
+            <div class="img">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKalANGR8SNCz_PDAS1yjcPqHatFb1j_nLCsDYbS6Qtg&s=10"
+                alt=""
+              />
+            </div>
+            Python
+          </div>
+        </div>
+      </div>
+      <div class="work_with" id="work_with">
+        <div class="offer">
+          <div class="guide">Get In Touch</div>
+          <hr />
+          <div class="box-work_with">
+            <div class="chota_box">
+              <div class="heading">Let's Work Together</div>
+              <div style="color: aquamarine">
+                I'm always open to new opportunities, interesting projects and
+                collaborations. Feel free to reach out!
+              </div>
+            </div>
+            <div class="links">
+              <div href="#" class="contect">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeS-Mxz6KOK8cNeNyxcLbKfyR65LTeeaeNwtdC38qGcw&s=10"
+                  alt=""
+                />
+                <a href="">Email</a>
+              </div>
+              <div href="#" class="contect">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwPs4aLjB6PrVFbGobXz0h7wluc7p07sCyaPnyTHvWSA&s=10"
+                  alt=""
+                />
+                <a href="https://github.com/RishabhGupta831">GitHub</a>
+              </div>
+              <div href="#" class="contect">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRS6uHWtrq76P_huoHbVy-3Twk3K5uwKFAQke5Tks4XQ&s=10"
+                  alt=""
+                />
+                <a href="https://www.linkedin.com/in/rishabh-gupta-20aa75383/"
+                  >Linkedin</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        style="
+          text-align: center;
+          padding: 5px;
+          background: #0b1020;
+          color: rgb(113, 114, 113);
+        "
+      >
+        <div>&copy; 2026 Rishabh Gupta</div>
+      </footer>
+    </div>
+  </body>
+</html>
